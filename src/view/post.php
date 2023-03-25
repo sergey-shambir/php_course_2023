@@ -14,11 +14,11 @@
 </head>
 <body>
 <div class="post-content">
-    <h1><?= $post['title'] ?></h1>
+    <h1><?= htmlentities($post['title']) ?></h1>
     <?php if ($post['subtitle']): ?>
-        <h2><?= $post['subtitle'] ?></h2>
+        <h2><?= htmlentities($post['subtitle']) ?></h2>
     <?php endif; ?>
-    <p><?= $post['content'] ?></p>
+    <p><?= htmlentities($post['content']) ?></p>
 </div>
 </body>
 </html>
