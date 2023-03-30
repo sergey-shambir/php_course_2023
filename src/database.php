@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/Model/Post.php';
 
 // Создаёт объект PDO, представляющий подключение к MySQL.
 function connectDatabase(): PDO
@@ -12,7 +13,7 @@ function connectDatabase(): PDO
 }
 
 // Сохраняет пост в таблицу post, возвращает ID поста.
-function savePostToDatabase(PDO $connection, array $postParams): int
+function savePostToDatabase(PDO $connection, Post $post): int
 {
     $query = <<<SQL
         INSERT INTO post (title, subtitle, content)
@@ -21,9 +22,9 @@ function savePostToDatabase(PDO $connection, array $postParams): int
 
     $statement = $connection->prepare($query);
     $statement->execute([
-        ':title' => $postParams['title'],
-        ':subtitle' => $postParams['subtitle'],
-        ':content' => $postParams['content']
+        ':title' => $post->getTitle(),
+        ':subtitle' => $post->getSubtitle(),
+        ':content' => $post->getContent()
     ]);
 
     return (int)$connection->lastInsertId();
@@ -31,7 +32,7 @@ function savePostToDatabase(PDO $connection, array $postParams): int
 
 // Извлекает из БД данные поста с указанным ID.
 // Возвращает null, если пост не найден
-function findPostInDatabase(PDO $connection, int $id): ?array
+function findPostInDatabase(PDO $connection, int $id): ?Post
 {
     $query = <<<SQL
         SELECT
@@ -45,7 +46,10 @@ function findPostInDatabase(PDO $connection, int $id): ?array
         SQL;
 
     $statement = $connection->query($query);
-    $row = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($row = $statement->fetch(PDO::FETCH_ASSOC))
+    {
+        return new Post((int)$row['id'], $row['title'], $row['subtitle'], $row['content']);
+    }
 
-    return $row ?: null;
+    return null;
 }

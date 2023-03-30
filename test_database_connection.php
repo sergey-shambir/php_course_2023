@@ -5,10 +5,12 @@ require_once __DIR__ . '/src/database.php';
 
 $connection = connectDatabase();
 
-$postId = savePostToDatabase($connection, [
-    'title' => 'Новый пост',
-    'subtitle' => 'Новый подзаголовок',
-    'content' => 'Текст-рыба для нового поста',
-]);
+$postId = savePostToDatabase($connection, new Post(
+    null,
+    'Новый пост',
+    'Новый подзаголовок',
+    'Текст-рыба для нового поста'
+));
+
 $post = findPostInDatabase($connection, $postId);
 var_dump($post);

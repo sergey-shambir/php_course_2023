@@ -12,13 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST')
 
 function handleAddPost()
 {
-    $postData = [
-        'title' => $_POST['title'],
-        'subtitle' => $_POST['subtitle'],
-        'content' => $_POST['content'],
-    ];
+    $post = new Post(
+        null,
+        $_POST['title'],
+        $_POST['subtitle'],
+        $_POST['content'],
+    );
     $connection = connectDatabase();
-    $postId = savePostToDatabase($connection, $postData);
+    $postId = savePostToDatabase($connection, $post);
     writeRedirectSeeOther("/show_post.php?post_id=$postId");
 }
 
