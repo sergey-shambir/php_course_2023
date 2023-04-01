@@ -13,9 +13,10 @@
 <body>
 <div class="post-content">
     <h1><?= htmlentities($post->getTitle()) ?></h1>
-    <?php if ($post['subtitle']): ?>
+    <?php if ($post->getSubtitle()): ?>
         <h2><?= htmlentities($post->getSubtitle()) ?></h2>
     <?php endif; ?>
+    <p><em><?= $post->getPostedAt()->format(DateTimeInterface::RSS) ?></em></p>
     <p><?= htmlentities($post->getContent()) ?></p>
 </div>
 </body>
