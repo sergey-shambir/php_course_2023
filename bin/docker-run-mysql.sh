@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-docker run --rm \
+set -o errexit
+
+exec docker run --rm \
   -p 127.0.0.1:3306:3306 \
   --name=php-course-db \
   -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
