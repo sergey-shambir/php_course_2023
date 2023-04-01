@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../Database/ConnectionProvider.php';
-require_once __DIR__ . '/../Database/PostTable.php';
-require_once __DIR__ . '/../Model/Post.php';
+namespace App\Controller;
+
+use App\Database\ConnectionProvider;
+use App\Database\PostTable;
+use App\Model\Post;
 
 class PostController
 {

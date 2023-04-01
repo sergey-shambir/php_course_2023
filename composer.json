@@ -1,8 +1,7 @@
 {
-  "name": "sergey.shambir/php_course",
   "autoload": {
     "psr-4": {
-      "SergeyShambir\\PhpCourse\\": "src/"
+      "App\\": "src/"
     }
   },
   "require": {}
