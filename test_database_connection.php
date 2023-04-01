@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/src/Database/ConnectionProvider.php';
-require_once __DIR__ . '/src/Database/PostTable.php';
-require_once __DIR__ . '/src/Model/Post.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
+use App\Database\ConnectionProvider;
+use App\Database\PostTable;
+use App\Model\Post;
 
 $connection = ConnectionProvider::connectDatabase();
 $postTable = new PostTable($connection);
