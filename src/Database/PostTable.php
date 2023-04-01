@@ -1,15 +1,17 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../Model/Post.php';
+namespace App\Database;
+
+use App\Model\Post;
 
 class PostTable
 {
     private const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
 
-    private PDO $connection;
+    private \PDO $connection;
 
-    public function __construct(PDO $connection)
+    public function __construct(\PDO $connection)
     {
         $this->connection = $connection;
     }
@@ -30,7 +32,7 @@ class PostTable
         SQL;
 
         $statement = $this->connection->query($query);
-        if ($row = $statement->fetch(PDO::FETCH_ASSOC))
+        if ($row = $statement->fetch(\PDO::FETCH_ASSOC))
         {
             return $this->createPostFromRow($row);
         }
@@ -67,12 +69,12 @@ class PostTable
         );
     }
 
-    private function parseDateTime(string $value): DateTimeImmutable
+    private function parseDateTime(string $value): \DateTimeImmutable
     {
-        $result = DateTimeImmutable::createFromFormat(self::MYSQL_DATETIME_FORMAT, $value);
+        $result = \DateTimeImmutable::createFromFormat(self::MYSQL_DATETIME_FORMAT, $value);
         if (!$result)
         {
-            throw new InvalidArgumentException("Invalid datetime value '$value'");
+            throw new \InvalidArgumentException("Invalid datetime value '$value'");
         }
         return $result;
     }

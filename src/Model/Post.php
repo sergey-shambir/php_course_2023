@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Model;
+
 class Post
 {
     private ?int $id;
@@ -38,7 +40,7 @@ class Post
         return $this->content;
     }
 
-    public function getPostedAt(): ?DateTimeImmutable
+    public function getPostedAt(): ?\DateTimeImmutable
     {
         return $this->postedAt;
     }
