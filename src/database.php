@@ -15,14 +15,15 @@ function connectDatabase(): PDO
 function savePostToDatabase(PDO $connection, array $postParams): int
 {
     $query = <<<SQL
-        INSERT INTO post (title, subtitle, content)
-        VALUES (:title, :subtitle, :content)
+        INSERT INTO post (title, subtitle, illustration_path, content)
+        VALUES (:title, :subtitle, :illustration, :content)
         SQL;
 
     $statement = $connection->prepare($query);
     $statement->execute([
         ':title' => $postParams['title'],
         ':subtitle' => $postParams['subtitle'],
+        ':illustration' => $postParams['illustration'],
         ':content' => $postParams['content']
     ]);
 

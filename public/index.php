@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css/add_post.css">
 </head>
 <body>
-<form action="/add_post.php" method="post" class="add-post-form">
+<form enctype="multipart/form-data" action="/add_post.php" method="post" class="add-post-form">
     <h2>Добавление поста</h2>
     <div class="form-row">
         <label for="title">Заголовок:</label>
@@ -14,6 +14,10 @@
     <div class="form-row">
         <label for="subtitle">Подзаголовок:</label>
         <input type="text" name="subtitle" placeholder="Введите текст" id="subtitle" maxlength="200">
+    </div>
+    <div class="form-row">
+        <label for="content">Иллюстрация:</label>
+        <input type="file" name="illustration">
     </div>
     <div class="form-row">
         <label for="content">Содержание:</label>

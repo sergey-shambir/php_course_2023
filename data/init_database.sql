@@ -10,6 +10,7 @@ CREATE TABLE post
   id INT UNSIGNED AUTO_INCREMENT,
   title VARCHAR(200),
   subtitle VARCHAR(200),
+  illustration_path VARCHAR(500),
   content MEDIUMTEXT,
   posted_at DATETIME NOT NULL
     DEFAULT CURRENT_TIMESTAMP,
