@@ -39,6 +39,7 @@ function findPostInDatabase(PDO $connection, int $id): ?array
             id,
             title,
             subtitle,
+            illustration_path AS illustration,
             content,
             posted_at
         FROM post

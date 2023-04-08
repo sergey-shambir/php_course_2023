@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../src/response.php';
 require_once __DIR__ . '/../src/database.php';
+require_once __DIR__ . '/../src/upload.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'GET')
 {

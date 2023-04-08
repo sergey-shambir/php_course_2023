@@ -6,5 +6,10 @@
 
 .post-content p
 {
-font-size: 18px;
+    font-size: 18px;
+}
+
+.post-content img.post-illustration
+{
+    max-width: 800px;
 }
