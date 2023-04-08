@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST')
 
 function handleAddPost()
 {
+    throw new RuntimeException('Simulated error');
+
+    $illustrationInfo = $FILES['illustration'];
+    $illustrationPath = moveImageToUploads($illustrationInfo);
+
     $postData = [
         'title' => $_POST['title'],
         'subtitle' => $_POST['subtitle'],
