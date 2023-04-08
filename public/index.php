@@ -17,7 +17,7 @@
     </div>
     <div class="form-row">
         <label for="content">Иллюстрация:</label>
-        <input type="file" name="illustration">
+        <input type="file" name="illustration" accept="image/jpeg, image/png, image/webp">
     </div>
     <div class="form-row">
         <label for="content">Содержание:</label>
